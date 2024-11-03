@@ -1,0 +1,327 @@
+/* 
+///////////////////
+The Reset CSS Rules
+///////////////////
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Alkatra", cursive;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-family: "Dosis", sans-serif;
+  font-size: 16px;
+  color: #1e4040;
+}
+
+/* for all link tags */
+a {
+  color: #71d99e;
+}
+
+.hide-nav,
+main,
+aside {
+  background-color: #ffffff;
+  padding: 20px 5%;
+}
+
+header,
+footer {
+  background-color: #1e4040;
+  color: #71d99e;
+}
+
+/* 
+////////////////////////
+The Outer Grid CSS Rules
+////////////////////////
+*/
+
+.outer-grid {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 90px 1fr;
+  grid-template-areas:
+    "header header"
+    "inner-grid inner-grid";
+}
+
+/* to change the property of the grid on the second row */
+.outer-grid-expanded {
+  grid-template-areas:
+    "header header"
+    "navbar inner-grid";
+}
+
+/* to display the navigation bar */
+.hide-nav {
+  display: none;
+}
+
+header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-items,
+.right-items {
+  display: flex;
+  align-items: center;
+}
+
+/* left-items */
+
+.fa-bars {
+  margin-left: 15px;
+  font-size: 1.3rem;
+}
+
+.fa-bars:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.left-items h2 {
+  margin-left: 20px;
+}
+
+/* right-items */
+.header-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.header-link i {
+  font-size: 0.8rem;
+}
+
+nav {
+  grid-area: navbar;
+  border-right: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+/* 
+////////////////////////
+      nav styles
+////////////////////////
+*/
+
+nav {
+  padding-top: 20px;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+  color: #1e4040;
+}
+
+.nav-link a {
+  color: #1e4040;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* 
+////////////////////////
+The Inner Grid CSS Rules
+////////////////////////
+*/
+
+.inner-grid {
+  /* if the content height is big we 
+  need the outer grid to be fixed 
+  and the inner grid to be scrollble */
+  /* the overflow-y for the vertical scrolling*/
+  overflow-y: scroll;
+  display: grid;
+  grid-area: inner-grid;
+  background-color: rgba(0, 31, 255, 0.2);
+  grid-template-rows: 1fr auto 60px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "main"
+    "sidebar"
+    "footer";
+}
+
+main {
+  grid-area: main;
+  /*  to test the overflow on the inner-grid*/
+  /* height: 2000px; */
+}
+
+main h1,
+h2,
+h3 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+main p {
+  margin-bottom: 20px;
+}
+
+aside {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: start;
+  border-top: 1px solid rgb(0, 0, 0, 0.1);
+}
+
+aside h2 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+aside p {
+  margin-bottom: 20px;
+}
+
+img {
+  border-radius: 8px;
+  box-shadow: 1px 2px 3px 1px rgb(0, 0, 0, 0.2);
+  /* a max width of a 100% of its container in this case its the side bar*/
+  max-width: 100%;
+}
+
+footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+header h2 {
+  margin-top: 19px;
+}
+
+/* 
+///////////////////////////////
+            Collage
+///////////////////////////////
+*/
+
+.collage {
+  height: 550px;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 40px 1fr 40px 1fr;
+  align-items: center;
+}
+
+.collage * {
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.collage-1 {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  z-index: 1;
+  transform: rotate(-3deg);
+}
+
+.collage-2 {
+  grid-column-start: 2;
+  grid-column-end: 5;
+  z-index: 2;
+}
+
+.collage-3 img {
+  box-shadow: 2px 4px 10px 2px rgb(0, 0, 0, 0.5);
+}
+
+.collage-3 {
+  grid-column-start: 4;
+  grid-column-end: 6;
+  z-index: 1;
+  transform: rotate(3deg);
+}
+
+/* 
+///////////////////////////////
+The Brack Points Grid CSS Rules
+///////////////////////////////
+*/
+
+@media (min-width: 576px) {
+  .outer-grid {
+    grid-template-areas:
+      "header header"
+      "navbar inner-grid";
+  }
+
+  .hide-nav {
+    display: block;
+  }
+
+  .fa-bars {
+    display: none;
+  }
+
+  aside {
+    border-left: 1px solid rgb(0, 0, 0, 0.1);
+  }
+}
+
+@media (min-width: 992px) {
+  .inner-grid {
+    grid-template-rows: 1fr 60px;
+    grid-template-columns: minmax(auto, 700px) 1fr;
+    grid-template-areas:
+      "main sidebar"
+      "footer footer";
+  }
+}
+
+@media (min-width: 1440px) {
+  .outer-grid {
+    grid-template-columns: 1fr 950px 1fr;
+    grid-template-areas:
+      "header header header"
+      "navbar inner-grid inner-grid";
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr 950px 1fr;
+    grid-template-areas: "lh . rh";
+  }
+
+  .left-items {
+    grid-area: lh;
+    justify-self: end;
+  }
+
+  .right-items {
+    grid-area: rh;
+    justify-self: start;
+  }
+
+  nav {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 10px;
+  }
+}
